@@ -32,12 +32,18 @@ public class App {
 //        app.draw.setPenColor(verde);
 //        app.draw.filledRoundRectangle(300,150,150,75,25,25);
 
-        Circulo c = new Circulo(.5,.5,.1,Color.green);
+//        Circulo c = new Circulo(.5,.5,.1,Color.green);
+//
+//        c.desenhar(new Draw());
+//
+//        Grade g = new Grade(.1,.1,.1,5,5, Color.blue);
+//        g.desenhar(new Draw());
 
-        c.desenhar(new Draw());
+        Logo l = new Logo(.1,.1,.085,true);
 
-        Grade g = new Grade(.2,.2,.1,5,5, Color.blue);
-        g.desenhar(new Draw());
+        l.desenhar(new Draw());
+
+
 
     }
 }
