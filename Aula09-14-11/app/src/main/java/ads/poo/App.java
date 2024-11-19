@@ -14,9 +14,9 @@ public class App {
 
     public App(){
         this.draw = new Draw();;
-        this.draw.setCanvasSize(600,300);
-        this.draw.setXscale(0,600);
-        this.draw.setYscale(0,300);
+        this.draw.setCanvasSize(1000,600);
+        this.draw.setXscale(0,1000);
+        this.draw.setYscale(0,600);
     }
 
     public void quadrado(){
@@ -24,7 +24,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-//        App app = new App();
+        App app = new App();
 //        app.draw.circle(300,150,30);
 //        app.draw.square(300,150,50);
 //        Color verde = new Color(50,160,65);
@@ -39,11 +39,13 @@ public class App {
 //        Grade g = new Grade(.1,.1,.1,5,5, Color.blue);
 //        g.desenhar(new Draw());
 
-        Logo l = new Logo(.1,.1,.085,true);
-        Logo p = new Logo(.1,.1,.085,false);
+        Logo l = new Logo(80,50,40,true);
+//        Logo p = new Logo(1,1,.085,false);
 
-        l.desenhar(new Draw());
-        p.desenhar(new Draw());
+        l.desenhar(app.draw);
+
+//        l.desenhar(new Draw());
+//        p.desenhar(new Draw());
 
 
 
