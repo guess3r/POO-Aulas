@@ -40,8 +40,10 @@ public class App {
 //        g.desenhar(new Draw());
 
         Logo l = new Logo(.1,.1,.085,true);
+        Logo p = new Logo(.1,.1,.085,false);
 
         l.desenhar(new Draw());
+        p.desenhar(new Draw());
 
 
 

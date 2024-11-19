@@ -19,8 +19,10 @@ public class Logo {
     private double tamanho;
     private boolean colorido;
 
-    Color verde = new Color(50,160,65);
-    Color vermelho = new Color(200,25,30);
+    Color verde = new Color(50, 160, 65);
+    Color vermelho = new Color(200, 25, 30);
+    Color cinzaEscuro = new Color(46,46,46);
+    Color cinza = new Color(80,80,80);
 
     //Construtor
 
@@ -34,36 +36,27 @@ public class Logo {
 
     //Metodos
 
-    public void desenhar(Draw draw){
-
-//        draw.setCanvasSize(600,300);
-//        draw.setXscale(0,600);
-//        draw.setYscale(0,300);
-
-        if  (colorido == true){
-            Color atual = draw.getPenColor();
+    public void desenhar(Draw draw) {
+        if(colorido == true) {
             draw.setPenColor(verde);
-            //Linha 1
-            draw.filledRoundRectangle(x,y,tamanho,tamanho,15,15);
-            draw.filledRoundRectangle(x*3,y,tamanho,tamanho,15,15);
-            //Linha 2
-            draw.filledRoundRectangle(x,y*3,tamanho,tamanho,15,15);
-            draw.filledRoundRectangle(x*3,y*3,tamanho,tamanho,15,15);
-            draw.filledRoundRectangle(x*5,y*3,tamanho,tamanho,15,15);
-            //Linha 3
-            draw.filledRoundRectangle(x,y*5,tamanho,tamanho,15,15);
-            draw.filledRoundRectangle(x*3,y*5,tamanho,tamanho,15,15);
-            //Linha 4
+        }else {draw.setPenColor(cinza);}
+        //Linha 1
+        draw.filledRoundRectangle(x, y, tamanho, tamanho, 15, 15);
+        draw.filledRoundRectangle(x * 3, y, tamanho, tamanho, 15, 15);
+        //Linha 2
+        draw.filledRoundRectangle(x, y * 3, tamanho, tamanho, 15, 15);
+        draw.filledRoundRectangle(x * 3, y * 3, tamanho, tamanho, 15, 15);
+        draw.filledRoundRectangle(x * 5, y * 3, tamanho, tamanho, 15, 15);
+        //Linha 3
+        draw.filledRoundRectangle(x, y * 5, tamanho, tamanho, 15, 15);
+        draw.filledRoundRectangle(x * 3, y * 5, tamanho, tamanho, 15, 15);
+        //Linha 4
+        draw.filledRoundRectangle(x * 3, y * 7, tamanho, tamanho, 15, 15);
+        draw.filledRoundRectangle(x * 5, y * 7, tamanho, tamanho, 15, 15);
+        if(colorido == true) {
             draw.setPenColor(vermelho);
-            draw.filledCircle(x,y*7,tamanho);
-            draw.setPenColor(verde);
-            draw.filledRoundRectangle(x*3,y*7,tamanho,tamanho,15,15);
-            draw.filledRoundRectangle(x*5,y*7,tamanho,tamanho,15,15);
-
-            draw.setPenColor(atual);
-        }else{
-
-        }
+        }else {draw.setPenColor(cinzaEscuro);}
+        draw.filledCircle(x, y * 7, tamanho);
 
     }
 
