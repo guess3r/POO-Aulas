@@ -32,29 +32,88 @@ public class Contato {
     }
 
     public boolean addTelefone(String r, String v){
-        telefones.add(new Telefone(r,v));
+        Telefone novoTelefone = new Telefone(r, v);
+        if (novoTelefone.getValor().equals("invalido")) {
+            System.out.println("Telefone inválido: " + v);
+            return false;
+        }
+        if (telefones.stream().anyMatch(t -> t.getValor().equals(novoTelefone.getValor()))) {
+            System.out.println("Telefone duplicado: " + v);
+            return false;
+        }
+        telefones.add(novoTelefone);
         return true;
     }
 
     public boolean addEmail(String r, String v){
-        emails.add(new Email(r,v));
+        Email novoEmail = new Email(r, v);
+
+        if (novoEmail.toString().endsWith(": ")) {
+            System.out.println("E-mail inválido: " + v);
+            return false;
+        }
+
+        if (emails.stream().anyMatch(e -> e.toString().equals(novoEmail.toString()))) {
+            System.out.println("E-mail duplicado: " + v);
+            return false;
+        }
+
+        emails.add(novoEmail);
         return true;
     }
 
     public boolean removeTelefone(String r){
+        for (Telefone t : telefones) {
+            if (t.getValor().equals(r)) {
+                telefones.remove(t);
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean removeEmail(String r){
-        return false;
+        return emails.removeIf(email -> email.toString().startsWith(r + ":"));
     }
 
     public boolean updateTelefone(String r, String n){
+        for (Telefone telefone : telefones) {
+            if (telefone.toString().startsWith(r + ":")) {
+                if (telefone.setTelefone(n)) {
+                    return true;
+                } else {
+                    System.out.println("Número de telefone inválido: " + n);
+                    return false;
+                }
+            }
+        }
+        System.out.println("Telefone com rótulo '" + r + "' não encontrado.");
         return false;
     }
 
     public boolean updateEmail(String r, String e){
+        for (Email email : emails) {
+            if (email.toString().startsWith(r + ":")) {
+                String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
+                if (e.matches(eR)) {
+                    email.setValor(e); // Atualiza o valor diretamente
+                    return true;
+                } else {
+                    System.out.println("E-mail inválido: " + e);
+                    return false; // Novo e-mail inválido
+                }
+            }
+        }
+        System.out.println("E-mail com rótulo '" + r + "' não encontrado.");
         return false;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
     }
 
     @Override

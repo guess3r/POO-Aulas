@@ -9,7 +9,7 @@ classDiagram
         + menu()
     }
     
-    class AgendaTelefonica{
+    class Agenda{
         - contatos: ArrayList~Contato~
         + Agenda()
         + addContato(c: Contato): boolean
@@ -52,8 +52,8 @@ classDiagram
         + toString(): String
     }
     
-    AgendaTelefonica *-- Contato
+    Agenda *-- Contato
     Contato *-- Telefone
     Contato *-- Email
-    App *-- AgendaTelefonica
+    App *-- Agenda
 ```

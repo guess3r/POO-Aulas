@@ -22,6 +22,10 @@ public class Telefone {
         }
     }
 
+    public String getValor() {
+        return valor;
+    }
+
     String formatar(String mascara, String valor){
         MaskFormatter mask = null;
         String resultado = "";

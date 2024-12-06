@@ -10,11 +10,15 @@ public class Email {
         this.rotulo = rotulo;
     }
 
-    void setValor(String valor) {
+    boolean setValor(String valor) {
         String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         if(valor.matches(eR) == true){
             this.valor = valor;
-        }else this.valor = "";
+            return true;
+        }else {
+            this.valor = "";
+            return false;
+        }
     }
 
     public String toString() {
