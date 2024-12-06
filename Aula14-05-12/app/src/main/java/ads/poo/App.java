@@ -9,5 +9,13 @@ public class App {
         System.out.println(m);
         Email n = new Email("Trabalho","joao.gg");
         System.out.println(n);
+
+        Contato c = new Contato("João","Guesser","05012004");
+        c.addTelefone("Residencial","48998765432");
+        c.addEmail("Pessoal","meu.email@dominio.com.br");
+        System.out.println(c);
+
+
+
     }
 }

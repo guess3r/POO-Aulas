@@ -9,7 +9,7 @@ public class Telefone {
 
     public Telefone(String rotulo, String valor) {
         this.rotulo = rotulo;
-        this.valor = valor;
+        setTelefone(valor);
     }
 
     boolean setTelefone(String valor){
