@@ -62,6 +62,16 @@ public class Agenda {
         return false;
     }
 
+    public Contato getContato(String nome, String sobrenome) {
+        // Percorre a lista de contatos e verifica se algum contato tem o nome e sobrenome correspondentes
+        for (Contato contato : contatos) {
+            if (contato.getNome().equalsIgnoreCase(nome) && contato.getSobrenome().equalsIgnoreCase(sobrenome)) {
+                return contato; // Retorna o contato se encontrado
+            }
+        }
+        return null; // Retorna null se o contato não for encontrado
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder("Agenda:\n");
         for (Contato contato : contatos) {
