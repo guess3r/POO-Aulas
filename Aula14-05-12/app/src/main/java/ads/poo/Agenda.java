@@ -48,28 +48,27 @@ public class Agenda {
         return false;
     }
 
-    public boolean removeTelefone(String rotulo, Contato c) {
+    public boolean removeTelefone(String valor, Contato c) {
         if (c != null && contatos.contains(c)) {
-            return c.removeTelefone(rotulo);
+            return c.removeTelefone(valor);
         }
         return false;
     }
 
-    public boolean removeEmail(String rotulo, Contato c) {
+    public boolean removeEmail(String valor, Contato c) {
         if (c != null && contatos.contains(c)) {
-            return c.removeEmail(rotulo);
+            return c.removeEmail(valor);
         }
         return false;
     }
 
     public Contato getContato(String nome, String sobrenome) {
-        // Percorre a lista de contatos e verifica se algum contato tem o nome e sobrenome correspondentes
         for (Contato contato : contatos) {
             if (contato.getNome().equalsIgnoreCase(nome) && contato.getSobrenome().equalsIgnoreCase(sobrenome)) {
-                return contato; // Retorna o contato se encontrado
+                return contato;
             }
         }
-        return null; // Retorna null se o contato não for encontrado
+        return null;
     }
 
     public String toString() {

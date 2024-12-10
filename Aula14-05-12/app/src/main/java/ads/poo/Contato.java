@@ -21,9 +21,8 @@ public class Contato {
 
     boolean formatarData(String data){
         try {
-            // Modificado para aceitar formato ddMMyyyy sem barras
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-            this.nascimento = LocalDate.parse(data, formatter);  // Converte a String em LocalDate
+            this.nascimento = LocalDate.parse(data, formatter);
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao formatar a data: " + e.getMessage());
@@ -96,11 +95,11 @@ public class Contato {
             if (email.toString().startsWith(r + ":")) {
                 String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
                 if (e.matches(eR)) {
-                    email.setValor(e); // Atualiza o valor diretamente
+                    email.setValor(e);
                     return true;
                 } else {
                     System.out.println("E-mail inválido: " + e);
-                    return false; // Novo e-mail inválido
+                    return false;
                 }
             }
         }

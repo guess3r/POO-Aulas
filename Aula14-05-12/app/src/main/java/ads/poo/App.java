@@ -21,7 +21,7 @@ public class App {
             System.out.println("6. Mudar telefone ou e-mail");
             System.out.println("7. Sair");
 
-            System.out.println("Escolha uma opção: ");
+            System.out.print("Escolha uma opção: ");
             int opcao = teclado.nextInt();
             teclado.nextLine();
 
@@ -30,53 +30,113 @@ public class App {
                     System.out.println(agenda);
                     break;
                 case 2: // Adicionar Contato
-                    System.out.println("Digite o Nome: ");
+                    System.out.print("Digite o Nome: ");
                     String nome = teclado.nextLine();
-                    System.out.println("Digite o Sobrenome: ");
+                    System.out.print("Digite o Sobrenome: ");
                     String sobrenome = teclado.nextLine();
-                    System.out.println("Digite a data de nasimento (dd/MM/AAAA): ");
+                    System.out.print("Digite a data de nasimento (ddMMAAAA): ");
                     String data = teclado.nextLine();
                     agenda.addContato(nome,sobrenome,data);
                     break;
                 case 3: // Remover Contato
-                    System.out.println("Digite o Nome: ");
+                    System.out.print("Digite o Nome: ");
                     nome = teclado.nextLine();
-                    System.out.println("Digite o Sobrenome: ");
+                    System.out.print("Digite o Sobrenome: ");
                     sobrenome = teclado.nextLine();
                     if (agenda.removeContato(nome, sobrenome)) {
-                        System.out.println("Contato removido com sucesso.");
+                        System.out.print("Contato removido com sucesso.");
                     } else {
-                        System.out.println("Contato não encontrado.");
+                        System.out.print("Contato não encontrado.");
                     }
                     break;
                 case 4: // Adicionar Telefone ou Email
-                    System.out.println("Digite o rótulo: ");
-                    String rotulo = teclado.nextLine();
-                    System.out.println("Digite o valor: ");
-                    String valor = teclado.nextLine();
                     System.out.print("Digite o nome do contato: ");
                     nome = teclado.nextLine();
                     System.out.print("Digite o sobrenome do contato: ");
                     sobrenome = teclado.nextLine();
-                    String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
-                    if (valor.matches(eR) == true){
+
+                    System.out.println("Digite o rótulo: ");
+                    String rotulo = teclado.nextLine();
+                    System.out.println("Digite o valor: ");
+                    String valor = teclado.nextLine();
+                    if (valor.matches("^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$") == true){
                         agenda.addEmail(rotulo,valor,agenda.getContato(nome,sobrenome));
                         System.out.println("E-mail adicionado com suceesso!");
+                    }else if (valor.length() == 11){
+                        agenda.addTelefone(rotulo,valor,agenda.getContato(nome,sobrenome));
+                        System.out.println("Telefone adicionado com suceesso!");
+                    }else {
+                        System.out.println("Erro ao adicionar, tente novamente.");
                     }
+                    break;
                 case 5: // Remover Telefone ou Email
+                    System.out.print("Digite o nome do contato: ");
+                    nome = teclado.nextLine();
+                    System.out.print("Digite o sobrenome do contato: ");
+                    sobrenome = teclado.nextLine();
+                    System.out.println("Digite o valor do E-mail ou Telefone que deseja remover: ");
+                    valor = teclado.nextLine();
+                    if (valor.matches("^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$") == true){
+                        agenda.removeEmail(valor,agenda.getContato(nome,sobrenome));
+                        System.out.println("E-mail removido com suceesso!");
+                    }else if (valor.length() == 11){
+                        agenda.removeTelefone(valor,agenda.getContato(nome,sobrenome));
+                        System.out.println("Telefone removido com suceesso!");
+                    }else {
+                        System.out.println("Erro ao adicionar, tente novamente.");
+                    }
+                    break;
                 case 6: // Mudar Telefone ou Email
+                    System.out.println("Deseja alterar o telefone ou o e-mail?");
+                    String tipo = teclado.nextLine().toLowerCase();
+
+                    System.out.print("Digite o nome do contato: ");
+                    nome = teclado.nextLine();
+                    System.out.print("Digite o sobrenome do contato: ");
+                    sobrenome = teclado.nextLine();
+                    if (agenda.getContato(nome,sobrenome) == null) {
+                        System.out.println("Contato não encontrado.");
+                        break;
+                    }
+
+                    if (tipo.equals("telefone")){
+                        System.out.println("Digite o rotulo que deseja mudar: ");
+                        rotulo = teclado.nextLine();
+                        System.out.println("Digite o novo valor do telefone: ");
+                        valor = teclado.nextLine();
+                        boolean atualizado = agenda.updateTelefone(rotulo, valor, agenda.getContato(nome,sobrenome));
+                        if (atualizado) {
+                            System.out.println("Telefone alterado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao alterar o telefone. Verifique se o rótulo está correto.");
+                        }
+                    } else if (tipo.equals("email")) {
+                        System.out.print("Digite o rotulo que deseja mudar: ");
+                        rotulo = teclado.nextLine();
+                        System.out.print("Digite o novo valor do email: ");
+                        valor = teclado.nextLine();
+                        boolean atualizado = agenda.updateEmail(rotulo, valor, agenda.getContato(nome,sobrenome));
+                        if (atualizado) {
+                            System.out.println("E-mail alterado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao alterar o e-mail. Verifique se o rótulo está correto.");
+                        }
+                    }
+                    break;
                 case 7: // Sair do Menu
-                default: break;
+                    System.out.println("Saindo...");
+                    return;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
             }
         }
-
-
-
     }
-
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+
+        App.Menu();
 
     }
+
 }
