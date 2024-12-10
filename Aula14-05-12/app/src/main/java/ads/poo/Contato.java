@@ -33,11 +33,11 @@ public class Contato {
     public boolean addTelefone(String r, String v){
         Telefone novoTelefone = new Telefone(r, v);
         if (novoTelefone.getValor().equals("invalido")) {
-            System.out.println("Telefone inválido: " + v);
+            System.out.println("Telefone inválido!");
             return false;
         }
         if (telefones.stream().anyMatch(t -> t.getValor().equals(novoTelefone.getValor()))) {
-            System.out.println("Telefone duplicado: " + v);
+            System.out.println("Telefone duplicado!");
             return false;
         }
         telefones.add(novoTelefone);
@@ -62,17 +62,11 @@ public class Contato {
     }
 
     public boolean removeTelefone(String r){
-        for (Telefone t : telefones) {
-            if (t.getValor().equals(r)) {
-                telefones.remove(t);
-                return true;
-            }
-        }
-        return false;
+        return telefones.removeIf(telefone -> telefone.getRotulo().equals(r));
     }
 
     public boolean removeEmail(String r){
-        return emails.removeIf(email -> email.toString().startsWith(r + ":"));
+        return emails.removeIf(email -> email.getRotulo().equals(r));
     }
 
     public boolean updateTelefone(String r, String n){
@@ -121,16 +115,16 @@ public class Contato {
         String dataFormatada = nascimento.format(formatter);
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Contato: \n");
-        sb.append("\nNome: ").append(this.nome);
-        sb.append("\nData de Nascimento:").append(dataFormatada);
-        sb.append("\nTelefones:");
+        sb.append("-Contato: \n");
+        sb.append(" -Nome: ").append(this.nome).append(" ").append(this.sobrenome);
+        sb.append("\n -Data de Nascimento:").append(dataFormatada);
+        sb.append("\n -Telefones:");
         for(Telefone elemento: telefones){
-            sb.append("\n -").append(elemento);
+            sb.append("\n ").append(elemento);
         }
-        sb.append("\nEmail:");
+        sb.append("\n -Email:");
         for(Email elemento: emails){
-            sb.append("\n -").append(elemento);
+            sb.append("\n ").append(elemento);
         }
 
         return sb.toString();

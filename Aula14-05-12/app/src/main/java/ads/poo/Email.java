@@ -16,12 +16,16 @@ public class Email {
             this.valor = valor;
             return true;
         }else {
-            this.valor = "";
+            this.valor = "invalido";
             return false;
         }
     }
 
+    public String getRotulo() {
+        return rotulo;
+    }
+
     public String toString() {
-            return this.rotulo + ": " + this.valor;
+            return "  -" + this.rotulo + ": " + this.valor;
     }
 }

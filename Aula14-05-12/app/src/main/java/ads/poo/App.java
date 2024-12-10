@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 public class App {
 
-    public static void Menu(){
+    private Agenda agenda = new Agenda();
+
+    public boolean menu(Agenda a){
         Scanner teclado = new Scanner(System.in);
-        Agenda agenda = new Agenda();
 
         while (true){
 
-            System.out.println("\nMenu:");
-            System.out.println("1. Listar contatos");
+            System.out.println("\n..::Menu::..");
+            System.out.println("1- Listar contatos");
             System.out.println("2. Adicionar contato");
             System.out.println("3. Remover Contato");
             System.out.println("4. Adicionar telefone ou e-mail");
@@ -83,7 +84,7 @@ public class App {
                         agenda.removeTelefone(valor,agenda.getContato(nome,sobrenome));
                         System.out.println("Telefone removido com suceesso!");
                     }else {
-                        System.out.println("Erro ao adicionar, tente novamente.");
+                        System.out.println("Erro ao remover, tente novamente.");
                     }
                     break;
                 case 6: // Mudar Telefone ou Email
@@ -135,7 +136,13 @@ public class App {
 
     public static void main(String[] args) {
 
-        App.Menu();
+//        Contato c = new Contato("João","Guesser","05012004");
+//        c.addTelefone("Pessoal","48999980728");
+//        System.out.println(c);
+//        c.removeTelefone("Pessoal");
+//        System.out.println(c);
+//        c.addEmail("Pessoal","joaogg2004@aluno.ifsc.edu.br");
+//        System.out.println(c);
 
     }
 

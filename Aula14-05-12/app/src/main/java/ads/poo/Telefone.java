@@ -26,6 +26,11 @@ public class Telefone {
         return valor;
     }
 
+    public String getRotulo() {
+        return rotulo;
+    }
+
+
     String formatar(String mascara, String valor){
         MaskFormatter mask = null;
         String resultado = "";
@@ -42,6 +47,6 @@ public class Telefone {
 
     @Override
     public String toString() {
-        return this.rotulo + ": " + this.formatar("(##) #####-####", this.valor);
+        return "  -" + this.rotulo + ": " + this.formatar("(##) #####-####", this.valor);
     }
 }
