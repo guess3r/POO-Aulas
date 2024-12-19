@@ -2,7 +2,7 @@ package ads.poo.produtos;
 
 public class Telefone {
 
-    private int codigo;
+    protected int codigo;
     private String numSerie;
     private String modelo;
     private double peso;

@@ -14,6 +14,7 @@ public class SemFio extends Telefone{
         this.distancia = distancia;
         this.quantidadeCanais = quantidadeCanais;
 
+        this.codigo = 10;
     }
 
     @Override
