@@ -3,12 +3,23 @@
  */
 package ads.poo;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import ads.poo.exercicio1.*;
 
+import java.util.ArrayList;
+
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        ArrayList<Animal> animais = new ArrayList<>();
+
+        animais.add(new Cachorro("Tobby"));
+        animais.add(new Gato("Pluma"));
+        animais.add(new Leão("Simba"));
+        animais.add(new Arara("Blue"));
+        animais.add(new Pinguim("Ta dando onda"));
+
+        for (Animal animal : animais) {
+            System.out.println(animal + " logo: " + animal.habilidade());
+        }
     }
 }
