@@ -3,12 +3,13 @@
  */
 package ads.poo;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.util.ArrayList;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        Ferrari n = new Ferrari(123);
+
+
     }
 }
